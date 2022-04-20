@@ -1,9 +1,8 @@
-/*const app = require('express');
-const router=require('express').Router();
+const app = require("express");
+const router = require("express").Router();
 
+router.get("/", async (req, res) => {
+  res.json("hola mundo");
+});
 
-
-
-router.get('/', async (req,res)=> {
-    res.json("hola mundo");
-});*/
+module.exports = router;
