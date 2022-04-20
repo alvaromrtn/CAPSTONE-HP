@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require('express');
 
 const app = express()
@@ -20,3 +21,6 @@ app.use(cors(corsOptions));
 app.listen(port, () => {
     console.log('Ejecutando...')    
 });
+=======
+jdsf
+>>>>>>> 1bdb68b008b0272b76c79acc0598dc6771ba5f3b
