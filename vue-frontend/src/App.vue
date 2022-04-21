@@ -4,7 +4,8 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/endpoint">Endpoint</router-link> |
       <router-link to="/password">Password</router-link> |
-      <router-link to="/username">Username</router-link>
+      <router-link to="/username">Username</router-link> |
+      <router-link to="/esperanza_de_vida">Esperanza de vida</router-link>
     </nav>
     <router-view />
   </div>
@@ -13,8 +14,7 @@
 <script>
 export default {
   name: "App",
-  components: {
-  },
+  components: {},
 };
 </script>
 

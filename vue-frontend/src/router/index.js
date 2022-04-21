@@ -21,6 +21,11 @@ const routes = [
     name: "password",
     component: () => import("../views/Password.vue"),
   },
+  {
+    path: "/esperanza_de_vida",
+    name: "esperanza_de_vida",
+    component: () => import("../views/EsperanzaVida.vue"),
+  },
 ];
 
 const router = createRouter({
