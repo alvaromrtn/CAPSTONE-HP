@@ -5,7 +5,9 @@
       <router-link to="/endpoint">Endpoint</router-link> |
       <router-link to="/password">Password</router-link> |
       <router-link to="/username">Username</router-link> |
-      <router-link to="/esperanza_de_vida">Esperanza de vida</router-link>
+      <router-link to="/esperanza_de_vida">Esperanza de vida</router-link> |
+      <router-link to="/login">Login</router-link> |
+      <router-link to="/register">Register</router-link>
     </nav>
     <router-view />
   </div>
