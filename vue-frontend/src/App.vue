@@ -1,14 +1,34 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/endpoint">Endpoint</router-link> |
-      <router-link to="/password">Password</router-link> |
-      <router-link to="/username">Username</router-link> |
-      <router-link to="/esperanza_de_vida">Esperanza de vida</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/register">Register</router-link>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto">
+          <router-link to="/" class="nav-link">Home</router-link>
+          <router-link to="/endpoint" class="nav-link">Endpoint</router-link>
+          <router-link to="/password" class="nav-link">Password</router-link>
+          <router-link to="/username" class="nav-link">Username</router-link>
+          <router-link to="/esperanza_de_vida" class="nav-link"
+            >Esperanza de vida</router-link
+          >
+          <router-link to="/login" class="nav-link">Login</router-link>
+          <router-link to="/register" class="nav-link">Register</router-link>
+        </div>
+      </div>
     </nav>
+
     <router-view />
   </div>
 </template>
