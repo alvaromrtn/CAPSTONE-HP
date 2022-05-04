@@ -1,5 +1,6 @@
 const app = require("express");
 const router = require("express").Router();
+const User = require('../model/User')
 
 router.get("/", async (req, res) => {
   res.json("HOME");
@@ -19,15 +20,56 @@ router.get("/password", async (req, res) => {
 
 //login
 router.post("/login", async (req, res) => {
-  //comprobar datos
-  console.log(req.body);
-  res.status(200).send(req.body);
+  
+  await User.findOne({email: req.body.email},async (err,user)=>{
+    if(err) return res.status(500).json({
+         title: 'Error del servidor',
+         error: err
+     })
+     if(user.length===0){
+         return res.status(401).json({
+             title: 'Usuario no encontrado',
+             error: 'Datos incorrectos'
+         })
+     }
+     
+     const match = await user.matchPassword(req.body.password);
+     console.log(match)
+     if(!match){
+         return res.status(401).json({
+             title: 'La contraseña no coincide',
+             error: 'Datos incorrectos'
+         })
+     }else{
+         return res.json({
+          title:"Usuario registrado",
+          status: 200
+        })
+     }
+    }).clone();
 });
 //registro
 router.post("/register", async (req, res) => {
-  //comprobar datos
-  console.log(req.body);
-  res.status(200).send(req.body);
+    const {name,lastName,email,password, confirm_password}=req.body;
+
+    const emailUser= await User.findOne({email: email});
+    
+    //comprobaciones de si las contraseñas son iguales, longitud de contraseñas, formato email
+    if(emailUser){
+        res.json({
+            title: 'El usuario ya existe',
+            status: 401
+        });
+    }
+    const newUser = new User({name,lastName,email, password})
+    newUser.password= await newUser.encryptPassword(password);
+    console.log(newUser.password)
+    await newUser.save(function(err){
+        return res.json({
+          title:"Usuario registrado",
+          status: 200
+        })
+    });
 });
 
 router.get("/esperanza_de_vida", async (req, res) => {

@@ -36,7 +36,7 @@
           <br /><br />
           <div>
             ¿Aún no estás registrado?
-            <a class="" href="/#/register">Registrate aqui</a>
+            <a class="" href="/register">Registrate aqui</a>
           </div>
         </form>
       </div>

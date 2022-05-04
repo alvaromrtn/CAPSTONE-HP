@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const port = 8080;
 
+require('./database');
+
 const cors = require("cors");
 var corsOptions = {
   origin: "*",
@@ -17,4 +19,5 @@ app.use("/api/routes", require("./routes/routes"));
 
 app.listen(port, () => {
   console.log("Ejecutando...");
+
 });

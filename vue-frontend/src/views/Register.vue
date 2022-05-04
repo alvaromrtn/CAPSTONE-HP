@@ -59,7 +59,7 @@
           <br /><br />
           <div>
             ¿Ya estás registrado?
-            <a class="" href="/#/login">Inicia sesión aqui</a>
+            <a class="" href="/login">Inicia sesión aqui</a>
           </div>
           <!-- <router-link class="w-100 btn btn-lg btn-primary" type="submit" to="/signin">Sign up</router-link>-->
         </form>
