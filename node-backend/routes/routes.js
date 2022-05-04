@@ -15,6 +15,7 @@ router.get("/username", async (req, res) => {
 });
 
 router.get("/password", async (req, res) => {
+  
   res.json("password");
 });
 
@@ -32,7 +33,6 @@ router.post("/login", async (req, res) => {
              error: 'Datos incorrectos'
          })
      }
-     
      const match = await user.matchPassword(req.body.password);
      console.log(match)
      if(!match){
@@ -71,6 +71,32 @@ router.post("/register", async (req, res) => {
         })
     });
 });
+
+router.get('/profile',async (req,res)=>{
+  /*if (!req.headers.authorization) {
+     return res
+        .status(403).json({
+          title: "Tu peticion no tiene cabecera de autorizacion"
+        })
+  }
+  var token = req.headers.authorization.split(" ")[1];
+  var payload = jwt.decode(token.toString(),config.TOKEN_SECRET);
+  var search= await User.findOne({email: payload.sub})
+  console.log(search);
+  if (payload.exp <= moment().unix()) {
+    return res.status(401).send({ message: "El token ha expirado" });
+  }
+  res.json(search);*/
+  console.log("Entro aqui")
+  const email = "alvaro@gmail.com"
+  var search= await User.findOne({email: email})
+  res.json(search);
+})
+
+router.post('/changeData',async (req,res) => {    
+  var search=await User.findOneAndUpdate({email: req.body.email},{name: req.body.name,lastName:req.body.lastName})
+  res.json(search)
+})
 
 router.get("/esperanza_de_vida", async (req, res) => {
   let paises = [

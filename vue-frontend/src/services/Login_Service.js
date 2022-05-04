@@ -9,7 +9,6 @@ class Login_Service {
     return axios.post(ENDPOINT_API_BASE_URL, user).then((res) => {
       if (res.status === 200) {
         //this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.token
-
         var ruta = "/esperanza_de_vida";
         window.location.href = ruta;
       } /*else if(res.status === 500 || res.status===401){

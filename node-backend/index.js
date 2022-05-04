@@ -19,5 +19,4 @@ app.use("/api/routes", require("./routes/routes"));
 
 app.listen(port, () => {
   console.log("Ejecutando...");
-
 });

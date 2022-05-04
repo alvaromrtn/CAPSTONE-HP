@@ -25,6 +25,8 @@
           >
           <router-link to="/login" class="nav-link">Login</router-link>
           <router-link to="/register" class="nav-link">Register</router-link>
+          <router-link to="/profile" class="nav-link">Profile</router-link>
+
         </div>
       </div>
     </nav>
