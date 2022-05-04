@@ -91,8 +91,13 @@ export default {
   },
   methods: {
     sendUser() {
+      //COMPROBAR NOMBRE USUARIO Y PASS -> NO ESTÉN VACIAS (LENGTH)
       Register_Service.getRegister(this.user).then((response) => {
-        this.data = response.data;
+        this.data = response;
+
+        this.$router.push({
+          name: "login",
+        });
       });
     },
   },

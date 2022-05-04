@@ -1,104 +1,103 @@
+const { log } = require("console");
 const app = require("express");
 const router = require("express").Router();
-const User = require('../model/User')
+const User = require("../model/User");
 
-router.get("/", async (req, res) => {
+//HOME:
+router.get("/", async (request, response) => {
   res.json("HOME");
 });
 
-router.get("/endpoint", async (req, res) => {
-  res.json("endpoint");
+//ENDPOINT:
+router.get("/endpoint", async (request, response) => {
+  res.json("ENDPOINT");
 });
 
-router.get("/username", async (req, res) => {
-  res.json("username");
+//USERNAME:
+router.get("/username", async (request, response) => {
+  res.json("USERNAME");
 });
 
-router.get("/password", async (req, res) => {
-  
-  res.json("password");
+//PASSWORD:
+router.get("/password", async (request, response) => {
+  res.json("PASSWORD");
 });
 
-//login
-router.post("/login", async (req, res) => {
-  
-  await User.findOne({email: req.body.email},async (err,user)=>{
-    if(err) return res.status(500).json({
-         title: 'Error del servidor',
-         error: err
-     })
-     if(user.length===0){
-         return res.status(401).json({
-             title: 'Usuario no encontrado',
-             error: 'Datos incorrectos'
-         })
-     }
-     const match = await user.matchPassword(req.body.password);
-     console.log(match)
-     if(!match){
-         return res.status(401).json({
-             title: 'La contraseña no coincide',
-             error: 'Datos incorrectos'
-         })
-     }else{
-         return res.json({
-          title:"Usuario registrado",
-          status: 200
-        })
-     }
-    }).clone();
-});
-//registro
-router.post("/register", async (req, res) => {
-    const {name,lastName,email,password, confirm_password}=req.body;
-
-    const emailUser= await User.findOne({email: email});
-    
-    //comprobaciones de si las contraseñas son iguales, longitud de contraseñas, formato email
-    if(emailUser){
-        res.json({
-            title: 'El usuario ya existe',
-            status: 401
-        });
+//LOGIN:
+router.post("/login", async (request, response) => {
+  await User.findOne({ email: request.body.email }, async (error, user) => {
+    const match = await user.matchPassword(request.body.password);
+    console.log(match);
+    if (!match) {
+      return response.status(401).json({
+        title: "La contraseña no coincide",
+        error: "Datos incorrectos",
+      });
+    } else {
+      return response.status(200).json({
+        title: "Usuario registrado",
+        status: 200,
+      });
     }
-    const newUser = new User({name,lastName,email, password})
-    newUser.password= await newUser.encryptPassword(password);
-    console.log(newUser.password)
-    await newUser.save(function(err){
-        return res.json({
-          title:"Usuario registrado",
-          status: 200
-        })
-    });
+  }).clone();
 });
 
-router.get('/profile',async (req,res)=>{
-  /*if (!req.headers.authorization) {
+//REGISTER:
+router.post("/register", async (request, response) => {
+  const { name, lastName, email, password, confirm_password } = request.body;
+
+  const emailUser = await User.findOne({ email: email });
+
+  if (emailUser) {
+    response.json({
+      title: "El usuario ya existe",
+      status: 401,
+    });
+  }
+  const newUser = new User({ name, lastName, email, password });
+  newUser.password = await newUser.encryptPassword(password);
+  console.log(newUser.password);
+  await newUser.save(function (err) {
+    return response.json({
+      title: "Usuario registrado",
+      status: 200,
+    });
+  });
+});
+
+//PROFILE:
+router.get("/profile", async (request, response) => {
+  /*if (!request.headers.authorization) {
      return res
         .status(403).json({
           title: "Tu peticion no tiene cabecera de autorizacion"
         })
   }
-  var token = req.headers.authorization.split(" ")[1];
+  var token = request.headers.authorization.split(" ")[1];
   var payload = jwt.decode(token.toString(),config.TOKEN_SECRET);
   var search= await User.findOne({email: payload.sub})
   console.log(search);
   if (payload.exp <= moment().unix()) {
-    return res.status(401).send({ message: "El token ha expirado" });
+    return response.status(401).send({ message: "El token ha expirado" });
   }
   res.json(search);*/
-  console.log("Entro aqui")
-  const email = "alvaro@gmail.com"
-  var search= await User.findOne({email: email})
-  res.json(search);
-})
+  console.log("Entro aqui");
+  const email = "alvaro@gmail.com";
+  var search = await User.findOne({ email: email });
+  response.json(search);
+});
 
-router.post('/changeData',async (req,res) => {    
-  var search=await User.findOneAndUpdate({email: req.body.email},{name: req.body.name,lastName:req.body.lastName})
-  res.json(search)
-})
+//CHANGE_DATA:
+router.post("/changeData", async (request, response) => {
+  var user = await User.findOneAndUpdate(
+    { email: request.body.email },
+    { name: request.body.name, lastName: request.body.lastName }
+  );
+  response.json({ user: user, status: 200 });
+});
 
-router.get("/esperanza_de_vida", async (req, res) => {
+//ESPERANZA_DE_VIDA:
+router.get("/esperanza_de_vida", async (request, response) => {
   let paises = [
     {
       nombre: "Japón",
@@ -137,7 +136,7 @@ router.get("/esperanza_de_vida", async (req, res) => {
       mujeres: 85.1,
     },
   ];
-  res.json(paises);
+  response.json(paises);
 });
 
 module.exports = router;

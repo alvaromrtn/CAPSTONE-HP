@@ -64,8 +64,13 @@ export default {
   },
   methods: {
     login() {
+      //COMPROBAR NOMBRE USUARIO Y PASS -> NO ESTÉN VACIAS (LENGTH)
       Login_Service.getLogin(this.user).then((response) => {
-        this.data = response.data;
+        this.data = response;
+
+        this.$router.push({
+          name: "esperanza_de_vida",
+        });
       });
     },
   },
