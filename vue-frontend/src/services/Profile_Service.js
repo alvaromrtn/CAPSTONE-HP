@@ -6,8 +6,6 @@ const CHANGEDATA_API_BASE_URL = "http://localhost:8080/api/routes/changeData";
 
 class Profile_Service {
   getData() {
-    console.log("ESTOY AQUI");
-    Cookies.get("userLogged");
     console.log("COOKIE SERVICE: " + Cookies.get("userLogged"));
     let prueba = {};
     prueba.token = Cookies.get("userLogged");

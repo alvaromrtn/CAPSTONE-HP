@@ -9,21 +9,6 @@ router.get("/", async (request, response) => {
   res.json("HOME");
 });
 
-//ENDPOINT:
-router.get("/endpoint", async (request, response) => {
-  res.json("ENDPOINT");
-});
-
-//USERNAME:
-router.get("/username", async (request, response) => {
-  res.json("USERNAME");
-});
-
-//PASSWORD:
-router.get("/password", async (request, response) => {
-  res.json("PASSWORD");
-});
-
 //LOGIN:
 router.post("/login", async (request, response) => {
   await User.findOne({ email: request.body.email }, async (error, user) => {

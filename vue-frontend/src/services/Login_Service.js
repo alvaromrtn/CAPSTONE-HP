@@ -9,10 +9,7 @@ class Login_Service {
     return axios.post(LOGIN_API_BASE_URL, user).then((response) => {
       console.log(response.status);
       if (response.status === 200) {
-        console.log("hola buenas tardes ->" + response.data.token);
-        //  this.axios.headers.common["Authorization"] ="Bearer " + response.data.token;
-        console.log("CORRECTO");
-
+        //this.axios.headers.common["Authorization"] ="Bearer " + response.data.token;
         router.push({
           name: "esperanza_de_vida",
         });
