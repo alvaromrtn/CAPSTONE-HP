@@ -50,8 +50,8 @@ router.post("/register", async (request, response) => {
 
 //PROFILE:
 router.post("/profile", async (request, response) => {
-  console.log("los headers son" + request.headers.authorization);
-  console.log("los headers son" + request.body.token);
+  console.log("HEADERS: " + request.headers.authorization);
+  console.log("COOKIES: " + request.body.token);
 
   if (!request.body.token) {
     return response.status(403).json({
@@ -64,18 +64,20 @@ router.post("/profile", async (request, response) => {
   const email = "pedro@gmail.com";
   var user = await User.findOne({ email: email }); //payload.sub
   console.log(user);
-  /*if (payload.exp <= moment().unix()) {
+  /*
+  if (payload.exp <= moment().unix()) {
     return res.status(401).send({ message: "El token ha expirado" });
-  }*/
+  }
+  */
   response.json(user);
 });
 
 //CHANGE_DATA:
 router.post("/changeData", async (request, response) => {
-  ///comprobamos cabecera
+  //Comprobamos la cabecera:
   if (!request.headers.authorization) {
     return response.status(403).json({
-      title: "Tu peticion no tiene cabecera de autorizacion",
+      title: "Tu petición no tiene cabecera de autorización.",
     });
   }
   var user = await User.findOneAndUpdate(
@@ -87,10 +89,10 @@ router.post("/changeData", async (request, response) => {
 
 //ESPERANZA_DE_VIDA:
 router.get("/esperanza_de_vida", async (request, response) => {
-  //comprobamos la cabecera
+  //Comprobamos la cabecera:
   if (!request.headers.authorization) {
     return response.status(403).json({
-      title: "Tu peticion no tiene cabecera de autorizacion",
+      title: "Tu petición no tiene cabecera de autorización.",
     });
   }
 
@@ -135,15 +137,16 @@ router.get("/esperanza_de_vida", async (request, response) => {
   response.json(paises);
 });
 
-//DELETE USUARIO
+//BORRAR USUARIO:
 router.delete("/:id", async (request, response) => {
-  //comprobamos cabecera
-  /*if (!request.headers.authorization) {
-    return response
-       .status(403).json({
-         title: "Tu peticion no tiene cabecera de autorizacion"
-       })
-  }*/
+  //Comprobamos la cabecera:
+  /*
+  if (!request.headers.authorization) {
+    return response.status(403).json({
+      title: "Tu petición no tiene cabecera de autorización.",
+    });
+  }
+  */
   console.log("Entro en la ruta de eliminar");
   //await User.findByIdAndRemove(request.params.id);
   response.json({

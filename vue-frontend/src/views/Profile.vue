@@ -118,7 +118,6 @@
 
 <script>
 import Profile_Service from "../services/Profile_Service";
-import axios from "axios";
 import Cookies from "js-cookie";
 
 class User {
@@ -146,9 +145,7 @@ export default {
   methods: {
     getData() {
       Profile_Service.getData().then((response) => {
-        Cookies.get("userLogged");
         console.log("COOKIE: " + Cookies.get("userLogged"));
-        console.log("buenas noches");
         this.user = response.data;
         console.log(response.data);
       });
@@ -165,14 +162,12 @@ export default {
           this.$router.push({
             name: "esperanza_de_vida",
           });
-
-          // MOSTRAR POPUP
         });
       }
     },
     deleteUser(id) {
-      axios.delete("http://localhost:8080/api/routes/" + id).then((res) => {
-        console.log(res);
+      Profile_Service.deleteUser(id).then((response) => {
+        console.log(response);
         this.showModal = false;
         this.$router.push({
           name: "login",
