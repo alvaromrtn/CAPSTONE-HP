@@ -17,16 +17,15 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav mr-auto">
           <router-link to="/" class="nav-link">Home</router-link>
-          <router-link to="/endpoint" class="nav-link">Endpoint</router-link>
+          <router-link to="/login" class="nav-link">Login</router-link>
+          <router-link to="/register" class="nav-link">Register</router-link>
+          <!--<router-link to="/endpoint" class="nav-link">Endpoint</router-link>
           <router-link to="/password" class="nav-link">Password</router-link>
-          <router-link to="/username" class="nav-link">Username</router-link>
+          <router-link to="/username" class="nav-link">Username</router-link>-->
           <router-link to="/esperanza_de_vida" class="nav-link"
             >Esperanza de vida</router-link
           >
-          <router-link to="/login" class="nav-link">Login</router-link>
-          <router-link to="/register" class="nav-link">Register</router-link>
           <router-link to="/profile" class="nav-link">Profile</router-link>
-
         </div>
       </div>
     </nav>

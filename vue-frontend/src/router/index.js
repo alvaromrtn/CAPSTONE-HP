@@ -6,7 +6,7 @@ const routes = [
     name: "home",
     component: () => import("../views/Home.vue"),
   },
-  {
+  /*{
     path: "/endpoint",
     name: "endpoint",
     component: () => import("../views/Endpoint.vue"),
@@ -20,7 +20,7 @@ const routes = [
     path: "/password",
     name: "password",
     component: () => import("../views/Password.vue"),
-  },
+  },*/
   {
     path: "/esperanza_de_vida",
     name: "esperanza_de_vida",

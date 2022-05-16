@@ -2,23 +2,6 @@
         <div class="container-xl px-4 mt-4">
         <hr class="mt-0 mb-4">
         <div class="row">
-            <!--<div class="col-xl-4">
-                 Profile picture card
-                    <div class="card mb-4 mb-xl-0">
-                    <div class="card-header">Foto de perfil</div>
-                    <div class="card-body text-center">
-                        <form @submit.prevent= "changePhoto">
-                            Profile picture image
-                            <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                            Profile picture help block
-                            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                            Profile picture upload button
-                            <input class="form-group" type="file" accept="image/*" @change="uploadImage">
-                            <button class="btn btn-primary">Cambiar imagen</button>
-                        </form>
-                    </div>
-                </div>
-            </div>-->
             <div class="col-xl-8">
                 <!-- Account details card-->
                 <div class="card mb-4">
@@ -67,11 +50,41 @@
                             </div>
                             <button class="btn btn-primary">Guardar cambios</button>
                         </form>
+                        <button @click="showModal=true" class="btn btn-danger ">Eliminar usuario</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <!-- Modales -->
+        <div v-if="showModal">
+            <transition name="modal">
+            <div class="modal-mask">
+                <div class="modal-wrapper">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Usuario eliminado</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" @click="showModal = false">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estas seguro de que quieres eliminar el usuario?</p>
+                    </div>
+                        <div class="modal-footer">
+                            <a href="/">
+                                    <button>Pagina de inicio</button>
+                            </a> 
+                        </div>
+                        <button @click="deleteUser(user._id)" class="btn btn-danger "> Delete</button>
+                        <button type="button" class="btn btn-secondary" @click="showModal = false">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </transition>
+        </div>
+        </div>
 </template>
 <script>
 
@@ -90,7 +103,8 @@
         name: 'ProfileScript',
         data(){
             return{
-                user : new User()
+                user : new User(),
+                showModal: false
             }
         },
         created() {
@@ -100,7 +114,9 @@
             getData(){
                 axios.get('http://localhost:8080/api/routes/profile')
                  .then(res => {
+                     console.log("buenas noches")
                     this.user=res.data;
+
                     });
             },
             sendPersonalData(){
@@ -117,10 +133,19 @@
                         this.$router.push({
                                 name: 'esperanza_de_vida'
                             })
-                        //this.getData()
                         })
                 }
             },
+            deleteUser(id){
+                axios.delete('http://localhost:8080/api/routes/'+id)
+                .then(res=> {
+                    console.log(res)
+                    this.showModal=false;
+                    this.$router.push({
+                                name: 'login'
+                    })
+                });
+            }
         }
     }
 </script>

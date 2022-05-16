@@ -54,7 +54,7 @@ class User {
 }
 
 import Login_Service from "../services/Login_Service";
-
+import axios from "axios"
 export default {
   name: "LoginScript",
   data() {
@@ -65,7 +65,8 @@ export default {
   methods: {
     login() {
       Login_Service.getLogin(this.user).then((response) => {
-        this.data = response.data;
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + "victor"
+        console.log("La respuesta es"+response)
       });
     },
   },
