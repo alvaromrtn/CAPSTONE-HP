@@ -1,20 +1,34 @@
+const { log } = require("console");
 const app = require("express");
 const router = require("express").Router();
+<<<<<<< HEAD
 const User = require('../model/User')
 const service=require('../config/service') 
+=======
+const User = require("../model/User");
+>>>>>>> b72d10271c40aba7cb8e7ced685ef4dfb3c2433d
 
-router.get("/", async (req, res) => {
+//HOME:
+router.get("/", async (request, response) => {
   res.json("HOME");
 });
 
+<<<<<<< HEAD
 /*router.get("/endpoint", async (req, res) => {
   res.json("endpoint");
+=======
+//ENDPOINT:
+router.get("/endpoint", async (request, response) => {
+  res.json("ENDPOINT");
+>>>>>>> b72d10271c40aba7cb8e7ced685ef4dfb3c2433d
 });
 
-router.get("/username", async (req, res) => {
-  res.json("username");
+//USERNAME:
+router.get("/username", async (request, response) => {
+  res.json("USERNAME");
 });
 
+<<<<<<< HEAD
 router.get("/password", async (req, res) => {
   
   res.json("password");
@@ -68,11 +82,64 @@ router.post("/register", async (req, res) => {
 router.get('/profile',async (req,res)=>{
   console.log("los headers son" +req.headers.authorization)
   if (!req.headers.authorization) {
+=======
+//PASSWORD:
+router.get("/password", async (request, response) => {
+  res.json("PASSWORD");
+});
+
+//LOGIN:
+router.post("/login", async (request, response) => {
+  await User.findOne({ email: request.body.email }, async (error, user) => {
+    const match = await user.matchPassword(request.body.password);
+    console.log(match);
+    if (!match) {
+      return response.status(401).json({
+        title: "La contraseña no coincide",
+        error: "Datos incorrectos",
+      });
+    } else {
+      return response.status(200).json({
+        title: "Usuario registrado",
+        status: 200,
+      });
+    }
+  }).clone();
+});
+
+//REGISTER:
+router.post("/register", async (request, response) => {
+  const { name, lastName, email, password, confirm_password } = request.body;
+
+  const emailUser = await User.findOne({ email: email });
+
+  if (emailUser) {
+    response.json({
+      title: "El usuario ya existe",
+      status: 401,
+    });
+  }
+  const newUser = new User({ name, lastName, email, password });
+  newUser.password = await newUser.encryptPassword(password);
+  console.log(newUser.password);
+  await newUser.save(function (err) {
+    return response.json({
+      title: "Usuario registrado",
+      status: 200,
+    });
+  });
+});
+
+//PROFILE:
+router.get("/profile", async (request, response) => {
+  /*if (!request.headers.authorization) {
+>>>>>>> b72d10271c40aba7cb8e7ced685ef4dfb3c2433d
      return res
         .status(403).json({
           title: "Tu peticion no tiene cabecera de autorizacion"
         })
   }
+<<<<<<< HEAD
 
   //var token = req.headers.authorization.split(" ")[1];
   //var payload = jwt.decode(token.toString(),config.TOKEN_SECRET);
@@ -108,6 +175,33 @@ router.get("/esperanza_de_vida", async (req, res) => {
          title: "Tu peticion no tiene cabecera de autorizacion"
        })
   }
+=======
+  var token = request.headers.authorization.split(" ")[1];
+  var payload = jwt.decode(token.toString(),config.TOKEN_SECRET);
+  var search= await User.findOne({email: payload.sub})
+  console.log(search);
+  if (payload.exp <= moment().unix()) {
+    return response.status(401).send({ message: "El token ha expirado" });
+  }
+  res.json(search);*/
+  console.log("Entro aqui");
+  const email = "alvaro@gmail.com";
+  var search = await User.findOne({ email: email });
+  response.json(search);
+});
+
+//CHANGE_DATA:
+router.post("/changeData", async (request, response) => {
+  var user = await User.findOneAndUpdate(
+    { email: request.body.email },
+    { name: request.body.name, lastName: request.body.lastName }
+  );
+  response.json({ user: user, status: 200 });
+});
+
+//ESPERANZA_DE_VIDA:
+router.get("/esperanza_de_vida", async (request, response) => {
+>>>>>>> b72d10271c40aba7cb8e7ced685ef4dfb3c2433d
   let paises = [
     {
       nombre: "Japón",
@@ -146,7 +240,7 @@ router.get("/esperanza_de_vida", async (req, res) => {
       mujeres: 85.1,
     },
   ];
-  res.json(paises);
+  response.json(paises);
 });
 router.delete('/:id',async (req,res) =>{
   //comprobamos cabecera

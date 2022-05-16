@@ -64,9 +64,18 @@ export default {
   },
   methods: {
     login() {
+      //COMPROBAR NOMBRE USUARIO Y PASS -> NO ESTÉN VACIAS (LENGTH)
       Login_Service.getLogin(this.user).then((response) => {
+<<<<<<< HEAD
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + "victor"
         console.log("La respuesta es"+response)
+=======
+        this.data = response;
+
+        this.$router.push({
+          name: "esperanza_de_vida",
+        });
+>>>>>>> b72d10271c40aba7cb8e7ced685ef4dfb3c2433d
       });
     },
   },

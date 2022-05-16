@@ -1,10 +1,11 @@
 import axios from "axios";
 import router from '../router'
 
-const ENDPOINT_API_BASE_URL = "http://localhost:8080/api/routes/login";
+const LOGIN_API_BASE_URL = "http://localhost:8080/api/routes/login";
 
 class Login_Service {
   getLogin(user) {
+<<<<<<< HEAD
     return axios.post(ENDPOINT_API_BASE_URL, user).then((res) => {
       if (res.status === 200) {
         console.log("hola buenas tardes"+res.data.token)
@@ -20,6 +21,23 @@ class Login_Service {
         name: 'Login'
           })
       }
+=======
+    console.log(user);
+    return axios.post(LOGIN_API_BASE_URL, user).then((response) => {
+      console.log(response.status);
+      if (response.status === 200) {
+        //this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.token
+        console.log("CORRECTO");
+      }
+      /*
+        else if (res.status === 500 || res.status === 401) {
+          console.log(res);
+          this.$router.push({
+            name: "Login",
+          });
+        }
+      */
+>>>>>>> b72d10271c40aba7cb8e7ced685ef4dfb3c2433d
     });
   }
 }
