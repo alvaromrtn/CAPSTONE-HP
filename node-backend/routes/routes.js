@@ -156,24 +156,15 @@ router.delete("/:id", async (request, response) => {
 
 ///////API COVID///////////
 //DATOS POR ESTADO (PARAMETRO) Y FECHA (A MANO) FORMATO AAAA/MM/DD ??
-router.get("/covid/hoy/:estado", async (request, response) => { //
+router.get("/covid/hoy/:estado", async (request, response) => { 
   //const estado = req.params.estado;
   const estado = "ca"
+  const dia = null;
   axios.get(`https://api.covidtracking.com/v1/states/${estado}/20200501.json`).then((response) => {
-      console.log(response.data)
-      return response.data
-  })
-})
-router.get("/covid/hoy/:estado", async (request, response) => { //
-  //const estado = req.params.estado;
-  const estado = "ca"
-  console.log("hola")
-  axios.get(`https://api.covidtracking.com/v1/states/${estado}/20200501.json`).then((response) => {
-      /*const fecha=response.data.date*/
       console.log("Fecha"+response.data.date)
-      //return response.data
+      dia = response.data
   })
- 
+  return dia;
 })
 
 router.get("/covid/muertes/:estado", async (request, response) => { //
@@ -184,9 +175,20 @@ router.get("/covid/muertes/:estado", async (request, response) => { //
         response.data.forEach(dia => {
           muertes.push({fecha: dia.date, muertes: dia.death})
         });
-      console.log(muertes)
   })
+  return muertes;
 })
 
+router.get("/covid/casos/:estado", async (request, response) => { //
+  //const estado = req.params.estado;
+  const estado = "ca"
+  const casos= []
+  axios.get(`https://api.covidtracking.com/v1/states/${estado}/daily.json`).then((response) => {
+        response.data.forEach(dia => {
+          casos.push({fecha: dia.date, muertes: dia.total})
+        });
+  })
+  return casos;
+})
 
 module.exports = router;
