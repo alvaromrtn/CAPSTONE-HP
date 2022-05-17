@@ -1,8 +1,7 @@
-
 const router = require("express").Router();
 const User = require("../model/User");
 const service = require("../config/service");
-const axios = require("axios")
+const axios = require("axios");
 
 //HOME:
 router.get("/", async (request, response) => {
@@ -156,49 +155,57 @@ router.delete("/:id", async (request, response) => {
 
 ///////API COVID///////////
 //DATOS POR ESTADO (PARAMETRO) Y FECHA (A MANO) FORMATO AAAA/MM/DD ??
-router.get("/covid/hoy/:estado", async (request, response) => { 
+router.get("/covid/hoy/:estado", async (request, response) => {
   //const estado = req.params.estado;
-  const estado = "ca"
+  const estado = "ca";
   let dia = null;
-  dia = await axios.get(`https://api.covidtracking.com/v1/states/${estado}/20200501.json`).then((response) => {
-      console.log("Fecha"+response.data.date)
-      let dia1 = response.data
+  dia = await axios
+    .get(`https://api.covidtracking.com/v1/states/${estado}/20200501.json`)
+    .then((response) => {
+      console.log("Fecha" + response.data.date);
+      let dia1 = response.data;
       return dia1;
-  })
-  console.log(dia)
+    });
+  console.log(dia);
   return dia;
-})
+});
 
-router.get("/covid/muertes/:estado", async (request, response) => { //
+router.get("/covid/muertes/:estado", async (request, response) => {
+  //
   //const estado = req.params.estado;
-  const estado = "ca"
-  let muertes= []
-  muertes = await axios.get(`https://api.covidtracking.com/v1/states/${estado}/daily.json`).then((response) => {
-        let muertes1 = []
-        response.data.forEach(dia => {
-        muertes1.push({fecha: dia.date, muertes: dia.death})
+  const estado = "ca";
+  let muertes = [];
+  muertes = await axios
+    .get(`https://api.covidtracking.com/v1/states/${estado}/daily.json`)
+    .then((response) => {
+      let muertes1 = [];
+      response.data.forEach((dia) => {
+        muertes1.push({ fecha: dia.date, muertes: dia.death });
       });
-    return muertes1;
-  })
-  console.log(muertes)
+      return muertes1;
+    });
+  console.log(muertes);
   return muertes;
-})
+});
 
-router.get("/covid/casos/:estado", async (request, response) => { //
+router.get("/covid/casos/:estado", async (request, response) => {
+  //
   //const estado = req.params.estado;
-  const estado = "ca"
-  let casos= []
-  casos= await axios.get(`https://api.covidtracking.com/v1/states/${estado}/daily.json`).then((response) => {
-        //console.log(response.data)
-        let casos1 = []
-        response.data.forEach(dia => {
-          casos1.push({fecha: dia.date, casos: dia.total})
-        });
-       
-        return casos1;
-  })
-  console.log(casos)
-  return casos;
-})
+  const estado = "ca";
+  let casos = [];
+  casos = await axios
+    .get(`https://api.covidtracking.com/v1/states/${estado}/daily.json`)
+    .then((response) => {
+      //console.log(response.data)
+      let casos1 = [];
+      response.data.forEach((dia) => {
+        casos1.push({ fecha: dia.date, casos: dia.total });
+      });
+
+      return casos1;
+    });
+
+  response.json(casos);
+});
 
 module.exports = router;
