@@ -1,8 +1,8 @@
-const { log } = require("console");
-const app = require("express");
+
 const router = require("express").Router();
 const User = require("../model/User");
 const service = require("../config/service");
+const axios = require("axios")
 
 //HOME:
 router.get("/", async (request, response) => {
@@ -61,7 +61,7 @@ router.post("/profile", async (request, response) => {
 
   //var token = request.headers.authorization.split(" ")[1];
   //var payload = jwt.decode(token.toString(),config.TOKEN_SECRET);
-  const email = "pedro@gmail.com";
+  const email = "alvaro@gmail.com";
   var user = await User.findOne({ email: email }); //payload.sub
   console.log(user);
   /*
@@ -153,5 +153,40 @@ router.delete("/:id", async (request, response) => {
     status: "Usuario eliminado",
   });
 });
+
+///////API COVID///////////
+//DATOS POR ESTADO (PARAMETRO) Y FECHA (A MANO) FORMATO AAAA/MM/DD ??
+router.get("/covid/hoy/:estado", async (request, response) => { //
+  //const estado = req.params.estado;
+  const estado = "ca"
+  axios.get(`https://api.covidtracking.com/v1/states/${estado}/20200501.json`).then((response) => {
+      console.log(response.data)
+      return response.data
+  })
+})
+router.get("/covid/hoy/:estado", async (request, response) => { //
+  //const estado = req.params.estado;
+  const estado = "ca"
+  console.log("hola")
+  axios.get(`https://api.covidtracking.com/v1/states/${estado}/20200501.json`).then((response) => {
+      /*const fecha=response.data.date*/
+      console.log("Fecha"+response.data.date)
+      //return response.data
+  })
+ 
+})
+
+router.get("/covid/muertes/:estado", async (request, response) => { //
+  //const estado = req.params.estado;
+  const estado = "ca"
+  const muertes= []
+  axios.get(`https://api.covidtracking.com/v1/states/${estado}/daily.json`).then((response) => {
+        response.data.forEach(dia => {
+          muertes.push({fecha: dia.date, muertes: dia.death})
+        });
+      console.log(muertes)
+  })
+})
+
 
 module.exports = router;
