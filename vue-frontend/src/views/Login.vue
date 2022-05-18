@@ -54,8 +54,8 @@ class User {
 }
 
 import Login_Service from "../services/Login_Service";
-import axios from "axios";
-import Cookies from "js-cookie";
+//import axios from "axios";
+//import Cookies from "js-cookie";
 export default {
   name: "LoginScript",
   data() {
@@ -67,10 +67,10 @@ export default {
     login() {
       //COMPROBAR NOMBRE USUARIO Y PASS -> NO ESTÉN VACIAS (LENGTH)
       Login_Service.getLogin(this.user).then((response) => {
-        axios.defaults.headers.common["Authorization"] = "Bearer " + "victor";
+        //axios.defaults.headers.common["Authorization"] = "Bearer " + "victor";
         console.log("La respuesta es" + response);
-        let userLogged = "Bearer " + "victor";
-        Cookies.set("userLogged", userLogged);
+        //let userLogged = "Bearer " + "victor";
+        //Cookies.set("userLogged", userLogged);
 
         this.$router.push({
           name: "esperanza_de_vida",

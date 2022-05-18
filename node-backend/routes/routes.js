@@ -2,6 +2,9 @@ const router = require("express").Router();
 const User = require("../model/User");
 const service = require("../config/service");
 const axios = require("axios");
+var jwt = require("jwt-simple");
+const config= require('../config/token')
+const moment = require("moment");
 
 //HOME:
 router.get("/", async (request, response) => {
@@ -52,22 +55,21 @@ router.post("/profile", async (request, response) => {
   console.log("HEADERS: " + request.headers.authorization);
   console.log("COOKIES: " + request.body.token);
 
-  if (!request.body.token) {
+  if (!request.headers.authorization) {
     return response.status(403).json({
-      title: "Tu peticion no tiene cabecera de autorizacion",
+      title: "Tu petición no tiene cabecera de autorización.",
     });
   }
 
-  //var token = request.headers.authorization.split(" ")[1];
-  //var payload = jwt.decode(token.toString(),config.TOKEN_SECRET);
-  const email = "alvaro@gmail.com";
-  var user = await User.findOne({ email: email }); //payload.sub
+  var token = request.headers.authorization.split(" ")[1];
+  var payload = jwt.decode(token.toString(),config.TOKEN_SECRET);
+  //const email = "alvaro@gmail.com";
+  var user = await User.findOne({ email: payload.sub }); //payload.sub
   console.log(user);
-  /*
+  
   if (payload.exp <= moment().unix()) {
     return res.status(401).send({ message: "El token ha expirado" });
   }
-  */
   response.json(user);
 });
 
@@ -89,6 +91,7 @@ router.post("/changeData", async (request, response) => {
 //ESPERANZA_DE_VIDA:
 router.get("/esperanza_de_vida", async (request, response) => {
   //Comprobamos la cabecera:
+  console.log(request.headers.authorization)
   if (!request.headers.authorization) {
     return response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
@@ -139,13 +142,11 @@ router.get("/esperanza_de_vida", async (request, response) => {
 //BORRAR USUARIO:
 router.delete("/:id", async (request, response) => {
   //Comprobamos la cabecera:
-  /*
   if (!request.headers.authorization) {
     return response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
   }
-  */
   console.log("Entro en la ruta de eliminar");
   //await User.findByIdAndRemove(request.params.id);
   response.json({
@@ -157,6 +158,11 @@ router.delete("/:id", async (request, response) => {
 //DATOS POR ESTADO (PARAMETRO) Y FECHA (A MANO) FORMATO AAAA/MM/DD ??
 router.get("/covid/hoy/:estado", async (request, response) => {
   //const estado = req.params.estado;
+  if (!request.headers.authorization) {
+    return response.status(403).json({
+      title: "Tu petición no tiene cabecera de autorización.",
+    });
+  }
   const estado = "ca";
   let dia = null;
   dia = await axios
@@ -173,6 +179,11 @@ router.get("/covid/hoy/:estado", async (request, response) => {
 router.get("/covid/muertes/:estado", async (request, response) => {
   //
   //const estado = req.params.estado;
+  if (!request.headers.authorization) {
+    return response.status(403).json({
+      title: "Tu petición no tiene cabecera de autorización.",
+    });
+  }
   const estado = "ca";
   let muertes = [];
   muertes = await axios
@@ -189,8 +200,12 @@ router.get("/covid/muertes/:estado", async (request, response) => {
 });
 
 router.get("/covid/casos/:estado", async (request, response) => {
-  //
   //const estado = req.params.estado;
+  if (!request.headers.authorization) {
+    return response.status(403).json({
+      title: "Tu petición no tiene cabecera de autorización.",
+    });
+  }
   const estado = "ca";
   let casos = [];
   casos = await axios
@@ -207,5 +222,26 @@ router.get("/covid/casos/:estado", async (request, response) => {
 
   response.json(casos);
 });
+router.get("/covid/tests/:estado", async (request, response) => {
+  //const estado = req.params.estado;
+  if (!request.headers.authorization) {
+    return response.status(403).json({
+      title: "Tu petición no tiene cabecera de autorización.",
+    });
+  }
+  const estado = "ca";
+  let tests = [];
+  tests = await axios
+    .get(`https://api.covidtracking.com/v1/states/${estado}/daily.json`)
+    .then((response) => {
+      //console.log(response.data)
+      let tests1 = [];
+      response.data.forEach((dia) => {
+        tests1.push({ fecha: dia.date, tests: dia.totalTestsViral });
+      });
+      return tests1;
+    });
 
+  response.json(tests);
+});
 module.exports = router;
