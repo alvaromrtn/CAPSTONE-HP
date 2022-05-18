@@ -106,8 +106,6 @@ export default {
 
 <style lang="css">
 body {
-  padding-top: 60px;
-  padding-bottom: 60px;
   align-items: center;
   background-color: #f6f6f6;
 }

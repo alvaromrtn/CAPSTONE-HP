@@ -83,8 +83,6 @@ export default {
 
 <style>
 body {
-  padding-top: 60px;
-  padding-bottom: 60px;
   align-items: center;
   background-color: #fcfcfc;
 }

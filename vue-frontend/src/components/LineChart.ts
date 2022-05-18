@@ -1,8 +1,8 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h } from "vue";
 
-import { Line } from 'vue-chartjs'
+import { Line } from "vue-chartjs";
 
-import { Chart, registerables } from 'chart.js';
+import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 
 import {
@@ -13,7 +13,7 @@ import {
   LineElement,
   PointElement,
   CategoryScale,
-} from 'chart.js'
+} from "chart.js";
 
 ChartJS.register(
   Title,
@@ -22,55 +22,55 @@ ChartJS.register(
   LineElement,
   PointElement,
   CategoryScale
-)
+);
 
 export default defineComponent({
-  name: 'LineChart',
+  name: "LineChart",
   components: {
-    Line
+    Line,
   },
   props: {
     labels: {
       type: Object,
-      default: []
+      default: [],
     },
     data: {
-      type: Object,
-      default: []
+      type: Array,
+      default: [],
     },
     chartId: {
       type: String,
-      default: 'line-chart'
+      default: "line-chart",
     },
     width: {
       type: Number,
-      default: 400
+      default: 400,
     },
     height: {
       type: Number,
-      default: 400
+      default: 400,
     },
     cssClasses: {
-      default: '',
-      type: String
-    }
+      default: "",
+      type: String,
+    },
   },
   setup(props) {
     const chartData = {
       labels: props.labels,
       datasets: [
         {
-          label: 'Data One',
-          backgroundColor: '#f87979',
+          label: "Data One",
+          backgroundColor: "#f87979",
           data: props.data,
-        }
-      ]
-    }
+        },
+      ],
+    };
 
     const chartOptions = {
       responsive: true,
-      maintainAspectRatio: false
-    }
+      maintainAspectRatio: false,
+    };
 
     return () =>
       h(Line, {
@@ -79,7 +79,7 @@ export default defineComponent({
         chartId: props.chartId,
         width: props.width,
         height: props.height,
-        cssClasses: props.cssClasses
-      })
-  }
-})
+        cssClasses: props.cssClasses,
+      });
+  },
+});

@@ -180,7 +180,6 @@ export default {
 
 <style lan="css">
 body {
-  margin-top: 20px;
   background-color: #f2f6fc;
   color: #69707a;
 }

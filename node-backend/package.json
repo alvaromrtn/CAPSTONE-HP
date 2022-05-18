@@ -18,7 +18,7 @@
     "jwt-simple": "^0.5.6",
     "moment": "^2.29.3",
     "moongose": "^1.0.0",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.16",
     "request-promise": "^4.2.6"
   }
 }
