@@ -7,7 +7,7 @@
         <div class="card mb-4">
           <div class="card-header">Datos personales</div>
           <div class="card-body">
-            <form @submit.prevent="sendPersonalData">
+            <form @submit.prevent="sendData">
               <!-- Form Group (username)-->
               <div class="mb-3">
                 <label class="small mb-1" for="inputUsername">Email</label>

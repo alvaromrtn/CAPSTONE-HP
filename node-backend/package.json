@@ -19,6 +19,8 @@
     "moment": "^2.29.3",
     "moongose": "^1.0.0",
     "nodemon": "^2.0.16",
-    "request-promise": "^4.2.6"
+    "request-promise": "^4.2.6",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.4.0"
   }
 }
