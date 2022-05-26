@@ -3,7 +3,7 @@ const User = require("../model/User");
 const service = require("../config/service");
 const axios = require("axios");
 var jwt = require("jwt-simple");
-const config= require('../config/token')
+const config = require("../config/token");
 const moment = require("moment");
 
 //HOME:
@@ -32,7 +32,7 @@ router.post("/register", async (request, response) => {
   const { name, lastName, email, password, confirm_password } = request.body;
 
   const emailUser = await User.findOne({ email: email });
-
+  console.log("ESTOY AQUI REGISTER");
   if (emailUser) {
     response.json({
       title: "El usuario ya existe",
@@ -62,11 +62,11 @@ router.post("/profile", async (request, response) => {
   }
 
   var token = request.headers.authorization.split(" ")[1];
-  var payload = jwt.decode(token.toString(),config.TOKEN_SECRET);
+  var payload = jwt.decode(token.toString(), config.TOKEN_SECRET);
   //const email = "alvaro@gmail.com";
   var user = await User.findOne({ email: payload.sub }); //payload.sub
   console.log(user);
-  
+
   if (payload.exp <= moment().unix()) {
     return res.status(401).send({ message: "El token ha expirado" });
   }
@@ -91,7 +91,7 @@ router.post("/changeData", async (request, response) => {
 //ESPERANZA_DE_VIDA:
 router.get("/esperanza_de_vida", async (request, response) => {
   //Comprobamos la cabecera:
-  console.log(request.headers.authorization)
+  console.log(request.headers.authorization);
   if (!request.headers.authorization) {
     return response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
@@ -195,8 +195,8 @@ router.get("/covid/muertes/:estado", async (request, response) => {
       });
       return muertes1;
     });
-  console.log(muertes);
-  return muertes;
+
+  response.json(muertes);
 });
 
 router.get("/covid/casos/:estado", async (request, response) => {
@@ -211,7 +211,6 @@ router.get("/covid/casos/:estado", async (request, response) => {
   casos = await axios
     .get(`https://api.covidtracking.com/v1/states/${estado}/daily.json`)
     .then((response) => {
-      //console.log(response.data)
       let casos1 = [];
       response.data.forEach((dia) => {
         casos1.push({ fecha: dia.date, casos: dia.total });
@@ -244,4 +243,5 @@ router.get("/covid/tests/:estado", async (request, response) => {
 
   response.json(tests);
 });
+
 module.exports = router;

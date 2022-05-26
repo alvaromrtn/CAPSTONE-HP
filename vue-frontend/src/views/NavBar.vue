@@ -31,7 +31,15 @@
             >Esperanza de vida</router-link
           >
           <router-link to="/profile" class="nav-link">Profile</router-link>
-          <router-link to="/casos" class="nav-link">CASOS COVID</router-link>
+          <router-link to="/covid_casos" class="nav-link"
+            >CASOS COVID</router-link
+          >
+          <router-link to="/covid_muertes" class="nav-link"
+            >MUERTES COVID</router-link
+          >
+          <router-link to="/covid_tests" class="nav-link"
+            >TESTS COVID</router-link
+          >
         </div>
       </div>
     </nav>

@@ -2,7 +2,7 @@
   <div class="container">
     <br />
     <br />
-    <h1 class="text-center">CASOS</h1>
+    <h1 class="text-center">MUERTES</h1>
     <div v-if="this.datosGraficos">
       <LineChart :labels="this.labels" :data="this.data" />
     </div>
@@ -13,9 +13,9 @@
         <th>NOMBRE</th>
       </thead>
       <tbody>
-        <tr v-for="caso in casos" v-bind:key="caso.total">
-          <td>{{ caso.fecha }}</td>
-          <td>{{ caso.casos }}</td>
+        <tr v-for="dia in muertes" v-bind:key="dia.total">
+          <td>{{ dia.fecha }}</td>
+          <td>{{ dia.muertes }}</td>
         </tr>
       </tbody>
     </table>
@@ -28,30 +28,28 @@ import Covid_Service from "../services/Covid_Service";
 import LineChart from "../components/LineChart.ts";
 
 export default {
-  name: "MuertesCovidScript",
+  name: "Covid_MuertesScript",
   components: {
     LineChart,
   },
   data() {
     return {
-      casos: [],
-      ///////
+      muertes: [],
+      datosGraficos: false,
       labels: [],
       data: [],
-      ///
-      datosGraficos: false,
     };
   },
   methods: {
-    getCasos() {
+    getMuertes() {
       let estado = "ca";
-      Covid_Service.getCasos(estado).then((response) => {
+      Covid_Service.getMuertes(estado).then((response) => {
         console.log(response.data);
-        this.casos = response.data;
+        this.muertes = response.data;
 
-        this.casos.forEach((a) => {
+        this.muertes.forEach((a) => {
           this.labels.push(a.fecha);
-          this.data.push(a.casos);
+          this.data.push(a.muertes);
         });
 
         this.datosGraficos = true;
@@ -59,7 +57,7 @@ export default {
     },
   },
   created() {
-    this.getCasos();
+    this.getMuertes();
   },
 };
 </script>

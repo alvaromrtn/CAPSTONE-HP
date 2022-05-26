@@ -27,9 +27,19 @@ const routes = [
     component: () => import("../views/Profile.vue"),
   },
   {
-    path: "/casos",
+    path: "/covid_casos",
     name: "casos",
-    component: () => import("../views/CasosCovid.vue"),
+    component: () => import("../views/Covid_Casos.vue"),
+  },
+  {
+    path: "/covid_muertes",
+    name: "muertes",
+    component: () => import("../views/Covid_Muertes.vue"),
+  },
+  {
+    path: "/covid_tests",
+    name: "test",
+    component: () => import("../views/Covid_Tests.vue"),
   },
 ];
 
