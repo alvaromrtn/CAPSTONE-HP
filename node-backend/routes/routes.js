@@ -46,15 +46,16 @@ router.get("/", async (request, response) => {
  */
 router.post("/login", async (request, response) => {
   await User.findOne({ email: request.body.email }, async (error, user) => {
-    if(error) return res.status(500).json({
-        title: 'Error del servidor',
-        error: err
-    })
-    if(user === null){
-        return res.status(201).json({
-            title: 'Usuario no encontrado',
-            error: 'Datos incorrectos'
-        })
+    if (error)
+      return res.status(500).json({
+        title: "Error del servidor",
+        error: err,
+      });
+    if (user === null) {
+      return res.status(201).json({
+        title: "Usuario no encontrado",
+        error: "Datos incorrectos",
+      });
     }
     const match = await user.matchPassword(request.body.password);
     console.log(match);
@@ -86,7 +87,7 @@ router.post("/login", async (request, response) => {
  *            - name
  *            - lastName
  *            - email
- *            - password   
+ *            - password
  *            - confirm_password
  *          properties:
  *            name:
@@ -116,23 +117,23 @@ router.post("/login", async (request, response) => {
  */
 router.post("/register", async (request, response) => {
   const { name, lastName, email, password, confirm_password } = request.body;
-  const errors=[];
-    if(email.length <= 0){
-        errors.push('Por favor, introduce un nombre valido');
-    }
-    if(password != confirm_password){
-        errors.push('Las contraseñas no coinciden');
-    }
-    if(password == null || password.length < 4  ){
-        errors.push('La longitud de la contraseña debe ser mayor que 4');
-    }
-    if(errors.length > 0){
-        //res.json(errors)
-        return res.status(202).json({
-            title: 'Los datos son incorrectos',
-            error: 'Datos incorrectos',
-            errores: errors
-        })
+  const errors = [];
+  if (email.length <= 0) {
+    errors.push("Por favor, introduce un nombre valido");
+  }
+  if (password != confirm_password) {
+    errors.push("Las contraseñas no coinciden");
+  }
+  if (password == null || password.length < 4) {
+    errors.push("La longitud de la contraseña debe ser mayor que 4");
+  }
+  if (errors.length > 0) {
+    //res.json(errors)
+    return res.status(202).json({
+      title: "Los datos son incorrectos",
+      error: "Datos incorrectos",
+      errores: errors,
+    });
   }
   const emailUser = await User.findOne({ email: email });
   if (emailUser) {
@@ -167,19 +168,17 @@ router.post("/register", async (request, response) => {
  *      '500':
  *        description: Error del servidor
  */
-router.post("/profile", async (request, response) => {
-  console.log("HEADERS: " + request.headers.authorization);
-  console.log("COOKIES: " + request.body.token);
-
+router.get("/profile", async (request, response) => {
   if (!request.headers.authorization) {
-    return response.status(403).json({
+    response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
+    return;
   }
 
   var token = request.headers.authorization.split(" ")[1];
   var payload = jwt.decode(token.toString(), config.TOKEN_SECRET);
-  
+
   var user = await User.findOne({ email: payload.sub }); //payload.sub
 
   if (payload.exp <= moment().unix()) {
@@ -205,7 +204,7 @@ router.post("/profile", async (request, response) => {
  *            - name
  *            - lastName
  *            - email
- *            - password   
+ *            - password
  *          properties:
  *            name:
  *              type: string
@@ -229,7 +228,7 @@ router.post("/profile", async (request, response) => {
  */
 router.post("/changeData", async (request, response) => {
   //Comprobamos la cabecera:
-  console.log("Entro aqui para cambiar los datos del perfil")
+  console.log("Entro aqui para cambiar los datos del perfil");
   if (!request.headers.authorization) {
     return response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
@@ -334,7 +333,6 @@ router.delete("/:id", async (request, response) => {
       title: "Tu petición no tiene cabecera de autorización.",
     });
   }*/
-  //console.log("Entro en la ruta de eliminar");
   await User.findByIdAndRemove(request.params.id);
   response.json({
     status: "Usuario eliminado",
@@ -408,9 +406,10 @@ router.get("/covid/muertes/:estado", async (request, response) => {
   //
   //const estado = request.params.estado;
   if (!request.headers.authorization) {
-    return response.status(403).json({
+    response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
+    return;
   }
   const estado = "ca";
   let muertes = [];
@@ -451,9 +450,10 @@ router.get("/covid/muertes/:estado", async (request, response) => {
 router.get("/covid/casos/:estado", async (request, response) => {
   //const estado = req.params.estado;
   if (!request.headers.authorization) {
-    return response.status(403).json({
+    response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
+    return;
   }
   const estado = "ca";
   let casos = [];
@@ -494,16 +494,16 @@ router.get("/covid/casos/:estado", async (request, response) => {
 router.get("/covid/tests/:estado", async (request, response) => {
   //const estado = request.params.estado;
   if (!request.headers.authorization) {
-    return response.status(403).json({
+    response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
+    return;
   }
   const estado = "ca";
   let tests = [];
   tests = await axios
     .get(`https://api.covidtracking.com/v1/states/${estado}/daily.json`)
     .then((response) => {
-      //console.log(response.data)
       let tests1 = [];
       response.data.forEach((dia) => {
         tests1.push({ fecha: dia.date, tests: dia.totalTestsViral });

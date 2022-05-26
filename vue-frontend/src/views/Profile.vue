@@ -39,6 +39,7 @@
                     type="text"
                     v-model="user.lastName"
                     placeholder="Apellidos"
+                    autocomplete="apellidos"
                   />
                 </div>
                 <div class="col-md-6">
@@ -48,6 +49,7 @@
                     type="password"
                     v-model="user.newPassword"
                     placeholder="Nueva Contraseña"
+                    autocomplete="current-password"
                   />
                 </div>
                 <div class="col-md-6">
@@ -118,7 +120,6 @@
 
 <script>
 import Profile_Service from "../services/Profile_Service";
-import Cookies from "js-cookie";
 
 class User {
   constructor(email, lastName, newPassword, confirmPassword, name, profileUrl) {
@@ -145,9 +146,7 @@ export default {
   methods: {
     getData() {
       Profile_Service.getData().then((response) => {
-        console.log("COOKIE: " + Cookies.get("userLogged"));
         this.user = response.data;
-        console.log(response.data);
       });
     },
     sendData() {
@@ -157,8 +156,7 @@ export default {
           name: "profile",
         });
       } else {
-        Profile_Service.sendData(this.user).then((response) => {
-          console.log("RESPONSE: " + response);
+        Profile_Service.sendData(this.user).then(() => {
           this.$router.push({
             name: "esperanza_de_vida",
           });
@@ -166,8 +164,7 @@ export default {
       }
     },
     deleteUser(id) {
-      Profile_Service.deleteUser(id).then((response) => {
-        console.log(response);
+      Profile_Service.deleteUser(id).then(() => {
         this.showModal = false;
         this.$router.push({
           name: "login",

@@ -34,7 +34,6 @@ export default {
     getEsperanzaVida() {
       EsperanzaVida_Service.getEsperanzaVida().then((response) => {
         this.data = response.data;
-        console.log(response.data);
       });
     },
   },

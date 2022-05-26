@@ -14,13 +14,13 @@
 
     <table class="table table-striped table-responsive">
       <thead>
-        <th>ID</th>
-        <th>NOMBRE</th>
+        <th style="width: 50%">Fecha</th>
+        <th style="width: 50%">Número de casos</th>
       </thead>
       <tbody>
         <tr v-for="dia in casos" v-bind:key="dia.total">
-          <td>{{ dia.fecha }}</td>
-          <td>{{ dia.casos }}</td>
+          <td style="width: 50%">{{ dia.fecha }}</td>
+          <td style="width: 50%">{{ dia.casos }}</td>
         </tr>
       </tbody>
     </table>
@@ -51,7 +51,6 @@ export default {
     getCasos() {
       let estado = "ca";
       Covid_Service.getCasos(estado).then((response) => {
-        console.log(response.data);
         this.casos = response.data;
 
         this.casos.forEach((a) => {

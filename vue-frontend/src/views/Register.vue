@@ -31,6 +31,7 @@
               class="form-control form-control-lg"
               v-model="user.email"
               placeholder="Email"
+              autocomplete="username"
             />
           </div>
           <br />
@@ -41,6 +42,7 @@
               class="form-control form-control-lg"
               v-model="user.password"
               placeholder="Contraseña"
+              autocomplete="new-password"
             />
           </div>
           <br />
@@ -51,6 +53,7 @@
               class="form-control form-control-lg"
               v-model="user.confirm_password"
               placeholder="Confirmar contraseña"
+              autocomplete="new-password"
             />
           </div>
           <br />

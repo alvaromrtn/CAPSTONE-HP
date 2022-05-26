@@ -40,7 +40,6 @@ export default {
     getDatos() {
       let estado = "ca";
       Covid_Service.getCasos(estado).then((response) => {
-        console.log(response.data);
         this.casos = response.data;
 
         this.casos.forEach((a) => {
@@ -49,7 +48,6 @@ export default {
         });
 
         Covid_Service.getMuertes(estado).then((response) => {
-          console.log(response.data);
           this.muertes = response.data;
 
           this.muertes.forEach((a) => {
@@ -57,7 +55,6 @@ export default {
           });
 
           Covid_Service.getTests(estado).then((response) => {
-            console.log(response.data);
             this.tests = response.data;
 
             this.tests.forEach((a) => {

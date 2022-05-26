@@ -2,10 +2,10 @@
   <!-- navbar -->
   <div id="nav">
     <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light">
-      <a title="Universidad de Salamanca" href="http://localhost:8081/">
+      <a title="CAPSTONE" href="http://localhost:8081/">
         <img
           src="../../static/images/logo_capstone.png"
-          alt="Universidad de Salamanca"
+          alt="CAPSTONE"
           height="100"
         />
       </a>
@@ -24,24 +24,36 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav mr-auto">
-          <router-link to="/" class="nav-link">Home</router-link>
-          <router-link to="/login" class="nav-link">Login</router-link>
-          <router-link to="/register" class="nav-link">Register</router-link>
+          <router-link to="/" class="nav-link">Inicio</router-link>
+
+          <router-link to="/login" class="nav-link">Identificarse</router-link>
+
+          <router-link to="/register" class="nav-link">Registrarse</router-link>
+
+          <router-link to="/profile" class="nav-link">Perfil</router-link>
+
+          <div class="nav-item dropdown" style="cursor: pointer">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+              >Datos COVID-19</a
+            >
+            <div class="dropdown-menu">
+              <router-link to="/covid_casos" class="nav-link"
+                >Casos</router-link
+              >
+              <router-link to="/covid_muertes" class="nav-link"
+                >Muertes</router-link
+              >
+              <router-link to="/covid_tests" class="nav-link"
+                >Tests</router-link
+              >
+              <router-link to="/covid_datos" class="nav-link"
+                >Datos globales</router-link
+              >
+            </div>
+          </div>
+
           <router-link to="/esperanza_de_vida" class="nav-link"
             >Esperanza de vida</router-link
-          >
-          <router-link to="/profile" class="nav-link">Profile</router-link>
-          <router-link to="/covid_casos" class="nav-link"
-            >CASOS COVID</router-link
-          >
-          <router-link to="/covid_muertes" class="nav-link"
-            >MUERTES COVID</router-link
-          >
-          <router-link to="/covid_tests" class="nav-link"
-            >TESTS COVID</router-link
-          >
-          <router-link to="/covid_datos" class="nav-link"
-            >DATOS COVID</router-link
           >
         </div>
       </div>

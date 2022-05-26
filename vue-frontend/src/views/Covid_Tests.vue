@@ -14,13 +14,13 @@
 
     <table class="table table-striped table-responsive">
       <thead>
-        <th>ID</th>
-        <th>NOMBRE</th>
+        <th style="width: 50%">Fecha</th>
+        <th style="width: 50%">Número de tests</th>
       </thead>
       <tbody>
         <tr v-for="dia in tests" v-bind:key="dia.total">
-          <td>{{ dia.fecha }}</td>
-          <td>{{ dia.tests }}</td>
+          <td style="width: 50%">{{ dia.fecha }}</td>
+          <td style="width: 50%">{{ dia.tests }}</td>
         </tr>
       </tbody>
     </table>
@@ -51,7 +51,6 @@ export default {
     getTests() {
       let estado = "ca";
       Covid_Service.getTests(estado).then((response) => {
-        console.log(response.data);
         this.tests = response.data;
 
         this.tests.forEach((a) => {

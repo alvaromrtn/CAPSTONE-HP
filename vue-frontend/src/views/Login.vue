@@ -11,6 +11,7 @@
               class="form-control form-control-lg"
               v-model="user.email"
               placeholder="Email"
+              autocomplete="username"
             />
           </div>
           <br />
@@ -21,6 +22,7 @@
               class="form-control form-control-lg"
               v-model="user.password"
               placeholder="Contraseña"
+              autocomplete="current-password"
             />
           </div>
           <br />
@@ -54,8 +56,6 @@ class User {
 }
 
 import Login_Service from "../services/Login_Service";
-//import axios from "axios";
-//import Cookies from "js-cookie";
 export default {
   name: "LoginScript",
   data() {
@@ -65,13 +65,7 @@ export default {
   },
   methods: {
     login() {
-      //COMPROBAR NOMBRE USUARIO Y PASS -> NO ESTÉN VACIAS (LENGTH)
-      Login_Service.getLogin(this.user).then((response) => {
-        //axios.defaults.headers.common["Authorization"] = "Bearer " + "victor";
-        console.log("La respuesta es" + response);
-        //let userLogged = "Bearer " + "victor";
-        //Cookies.set("userLogged", userLogged);
-
+      Login_Service.getLogin(this.user).then(() => {
         this.$router.push({
           name: "esperanza_de_vida",
         });
