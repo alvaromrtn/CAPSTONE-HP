@@ -3,44 +3,48 @@
     <br />
     <br />
     <h1 class="text-center">CASOS</h1>
-    <div v-if="this.datosGraficos">
+    <div v-if="this.datosCargados">
       <LineChart
         :labels="this.labels"
         :data="this.data"
         :nombre_label="this.nombre_label"
         :color="this.color"
       />
-    </div>
 
-    <table class="table table-striped table-responsive">
-      <thead>
-        <th style="width: 50%">Fecha</th>
-        <th style="width: 50%">Número de casos</th>
-      </thead>
-      <tbody>
-        <tr v-for="dia in casos" v-bind:key="dia.total">
-          <td style="width: 50%">{{ dia.fecha }}</td>
-          <td style="width: 50%">{{ dia.casos }}</td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="table table-striped table-responsive">
+        <thead>
+          <th style="width: 50%">Fecha</th>
+          <th style="width: 50%">Número de casos</th>
+        </thead>
+        <tbody>
+          <tr v-for="dia in casos" v-bind:key="dia.total">
+            <td style="width: 50%">{{ dia.fecha }}</td>
+            <td style="width: 50%">{{ dia.casos }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div v-else>
+      <ProcesoCarga />
+    </div>
   </div>
 </template>
 
 <script>
 import Covid_Service from "../services/Covid_Service";
-
 import LineChart from "../components/LineChart.ts";
+import ProcesoCarga from "./ProcesoCarga";
 
 export default {
   name: "Covid_CasosScript",
   components: {
     LineChart,
+    ProcesoCarga,
   },
   data() {
     return {
       casos: [],
-      datosGraficos: false,
+      datosCargados: false,
       labels: [],
       data: [],
       nombre_label: "",
@@ -61,7 +65,7 @@ export default {
         this.nombre_label = "Casos";
         this.color = "#005DFF";
 
-        this.datosGraficos = true;
+        this.datosCargados = true;
       });
     },
   },

@@ -3,7 +3,7 @@
     <br />
     <br />
     <h1 class="text-center">DATOS COVID</h1>
-    <div v-if="this.datosGraficos">
+    <div v-if="this.datosCargados">
       <LineChart
         :labels="this.labels"
         :casos="this.data_casos"
@@ -11,25 +11,29 @@
         :tests="this.data_tests"
       />
     </div>
+    <div v-else>
+      <ProcesoCarga />
+    </div>
   </div>
 </template>
 
 <script>
 import Covid_Service from "../services/Covid_Service";
-
 import LineChart from "../components/DatosLineChart.ts";
+import ProcesoCarga from "./ProcesoCarga";
 
 export default {
   name: "Covid_DatosScript",
   components: {
     LineChart,
+    ProcesoCarga,
   },
   data() {
     return {
       casos: [],
       muertes: [],
       test: [],
-      datosGraficos: false,
+      datosCargados: false,
       labels: [],
       data_casos: [],
       data_muertes: [],
@@ -61,7 +65,7 @@ export default {
               this.data_tests.push(a.tests);
             });
 
-            this.datosGraficos = true;
+            this.datosCargados = true;
           });
         });
       });
