@@ -17,6 +17,8 @@ app.use(cors(corsOptions));
 
 app.use("/api/routes", require("./routes/routes"));
 
+app.use("/static", express.static(__dirname + "/public"));
+
 
 
 
@@ -27,9 +29,9 @@ const swaggerUi = require("swagger-ui-express");
 
 const swaggerDefinition = {
     info: {
-      title: "Implementar y usar Swagger en Node.js",
+      title: "Capstone IMMUNE",
       description:
-        "Documentar API RESTful en un servidor web creado en Node.js con el enfoque OpenAPI",
+        "Documentar API RESTful en un servidor web creado en Node.js y MongoDB",
     },
     servers: ["http://localhost:8080"],
     definitions: {
@@ -63,7 +65,6 @@ const swaggerDefinition = {
   
 const swaggerOptions = {
     swaggerDefinition,
-    //apis: ["./routes/*.js"],
     apis: ["./routes/*.js"]
 };
 

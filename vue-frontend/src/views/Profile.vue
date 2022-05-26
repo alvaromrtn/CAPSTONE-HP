@@ -62,7 +62,7 @@
                   />
                 </div>
               </div>
-              <button class="btn btn-primary">Guardar cambios</button>
+              <button class="btn btn-primary" style="background-color:#333c87;">Guardar cambios</button>
             </form>
             <button @click="showModal = true" class="btn btn-danger">
               Eliminar usuario
@@ -71,8 +71,7 @@
         </div>
       </div>
     </div>
-  </div>
-  <!-- Modales -->
+    <!-- Modales -->
   <div v-if="showModal">
     <transition name="modal">
       <div class="modal-mask">
@@ -116,6 +115,8 @@
       </div>
     </transition>
   </div>
+  </div>
+  
 </template>
 
 <script>

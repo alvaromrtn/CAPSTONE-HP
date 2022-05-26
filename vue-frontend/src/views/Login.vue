@@ -31,7 +31,7 @@
               ><input type="checkbox" value="remember-me" /> Recordarme</label
             >
           </div>
-          <button class="w-100 btn btn-success btn-block">
+          <button class="w-100 btn btn-success btn-block" style="background-color:#333c87;">
             Iniciar sesion
           </button>
 

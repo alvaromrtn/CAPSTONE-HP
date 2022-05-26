@@ -20,24 +20,26 @@
         <div class="carousel-item active">
           <img
             class="d-block w-100"
-            src="https://www.tuexperto.com/wp-content/uploads/2020/03/los-14-mejores-bancos-de-imagenes-hd-para-descargar-gratis-de-2020-1200x640.jpg"
+            src="http://localhost:8080/static/images/carousel1.jpg"
             alt="First slide"
           />
           <div class="carousel-caption d-none d-md-block">
-            <h5>Titulo</h5>
-            <p>Descripcion</p>
+            <h3>Descubre todos los datos de la pandemia en EEUU</h3>
+            <p>Registrate y descubre toda la información acerca del COVID 19</p>
             <div>
               <a
                 href="/login"
-                class="btn btn-primary btn-lg active"
+                class="btn btn-primary btn-lg active mx-3"
                 role="button"
                 aria-pressed="true"
+                style="background-color:#333c87;"
                 >Inicia sesion</a
               >
               <a
                 href="/register"
-                class="btn btn-primary btn-lg active"
+                class="btn btn-primary btn-lg active mx-3"
                 role="button"
+                style="background-color:#333c87;"
                 aria-pressed="true"
                 >Registrate</a
               >
@@ -47,24 +49,26 @@
         <div class="carousel-item">
           <img
             class="d-block w-100"
-            src="https://www.tuexperto.com/wp-content/uploads/2020/03/los-14-mejores-bancos-de-imagenes-hd-para-descargar-gratis-de-2020-1200x640.jpg"
+            src="http://localhost:8080/static/images/carousel2.jpg"
             alt="Second slide"
           />
           <div class="carousel-caption d-none d-md-block">
-            <h5>Titulo</h5>
-            <p>Descripcion</p>
+            <h5>Descubre todos los datos de la pandemia en EEUU</h5>
+            <p>Registrate y descubre toda la información acerca del COVID 19</p>
             <div>
               <a
                 href="/login"
-                class="btn btn-primary btn-lg active"
+                class="btn btn-primary btn-lg active mx-3"
                 role="button"
+                style="background-color:#333c87;"
                 aria-pressed="true"
                 >Inicia sesion</a
               >
               <a
                 href="/register"
-                class="btn btn-primary btn-lg active"
+                class="btn btn-primary btn-lg active mx-3"
                 role="button"
+                style="background-color:#333c87;"
                 aria-pressed="true"
                 >Registrate</a
               >
@@ -73,26 +77,28 @@
         </div>
         <div class="carousel-item">
           <img
-            class="d-block w-100"
-            src="https://www.tuexperto.com/wp-content/uploads/2020/03/los-14-mejores-bancos-de-imagenes-hd-para-descargar-gratis-de-2020-1200x640.jpg"
+            class="d-block w-100 "
+            src="http://localhost:8080/static/images/carousel3.png"
             alt="Third slide"
           />
           <div class="carousel-caption d-none d-md-block">
-            <h5>Titulo</h5>
-            <p>Descripcion</p>
+            <h5>Descubre todos los datos de la pandemia en EEUU</h5>
+            <p>Registrate y descubre toda la información acerca del COVID 19</p>
             <div>
               <a
                 href="/login"
-                class="btn btn-primary btn-lg active"
+                class="btn btn-primary btn-lg active mx-3"
                 type="button"
                 aria-pressed="true"
+                style="background-color:#333c87;"
                 >Inicia sesion</a
               >
               <a
                 href="/register"
-                class="btn btn-primary btn-lg active"
+                class="btn btn-primary btn-lg active mx-3"
                 type="button"
                 aria-pressed="true"
+                style="background-color:#333c87;"
                 >Registrate</a
               >
             </div>
@@ -130,12 +136,10 @@
             style="text-align: left"
           >
             <div class="p-lg-5 ps-lg-0">
-              <h6 class="text-primary">Header 1</h6>
-              <h1 class="mb-4">Titulo 1</h1>
+              <h6 class="text-primary">¿ Por qué nosotros?</h6>
+              <h1 class="mb-4">Datos de covid actualizados</h1>
               <p class="mb-4 pb-2">
-                Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit.
-                Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit,
-                sed stet lorem sit clita duo justo erat amet
+                ¿Quieres saber los nuevos positivos, fallecidos o los test realizados en tu estado?
               </p>
             </div>
           </div>
@@ -147,7 +151,7 @@
             <div class="position-relative h-100">
               <img
                 class="img-fluid w-100 h-100"
-                src="https://www.lukcomunicacion.com/wp-content/uploads/2017/06/5-webs-donde-encontrar-fotografi%CC%81as-de-calidad-gratis-unsplash.jpg"
+                src="http://localhost:8080/static/images/home1.jpg"
                 style="object-fit: cover"
                 alt=""
               />
@@ -170,7 +174,7 @@
             <div class="position-relative h-100">
               <img
                 class="img-fluid w-100 h-100"
-                src="https://www.lukcomunicacion.com/wp-content/uploads/2017/06/5-webs-donde-encontrar-fotografi%CC%81as-de-calidad-gratis-unsplash.jpg"
+                src="http://localhost:8080/static/images/home2.jpg"
                 style="object-fit: cover"
                 alt=""
               />
@@ -182,12 +186,11 @@
             style="text-align: right"
           >
             <div class="p-lg-5 ps-lg-0">
-              <h6 class="text-primary">Header 2</h6>
-              <h1 class="mb-4">Titulo 2</h1>
+              <h6 class="text-primary">Visualizacion sencilla de los datos</h6>
+              <h1 class="mb-4">Graficos covid</h1>
               <p class="mb-4 pb-2">
-                Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit.
-                Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit,
-                sed stet lorem sit clita duo justo erat amet
+                En nuestra aplicación podrás visualizar de manera sencilla los datos mas relevantes de la pandemia por estados. 
+                Enterate de la situación actual de tu estado en solo click
               </p>
             </div>
           </div>

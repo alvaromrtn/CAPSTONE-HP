@@ -57,7 +57,7 @@
             />
           </div>
           <br />
-          <button class="w-100 btn btn-success btn-block">Enviar</button>
+          <button class="w-100 btn btn-success btn-block" style="background-color:#333c87;">Enviar</button>
           <!--<router-link class="w-100 btn btn-lg btn-primary" type="submit" to="/signup">Iniciar sesion</router-link>-->
           <br /><br />
           <div>
