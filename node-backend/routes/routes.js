@@ -386,7 +386,7 @@ router.get("/covid/hoy/:estado", async (request, response) => {
  * @swagger
  * /api/routes/covid/muertes/{estado} :
  *  get:
- *    summary: Obtener los datos del dia establecido del estado pasado por parametro
+ *    summary: Obtener las muertes por covid del estado pasado por parametro
  *    tags: [GET]
  *    parameters:
  *      - in: path
@@ -405,12 +405,12 @@ router.get("/covid/hoy/:estado", async (request, response) => {
 router.get("/covid/muertes/:estado", async (request, response) => {
   //
   //const estado = request.params.estado;
-  if (!request.headers.authorization) {
+  /*if (!request.headers.authorization) {
     response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
     return;
-  }
+  }*/
   const estado = "ca";
   let muertes = [];
   muertes = await axios
@@ -441,7 +441,7 @@ router.get("/covid/muertes/:estado", async (request, response) => {
  *        type: string
  *    responses:
  *      '200':
- *        description: Datos diarios de casos obtenidos correctamente
+ *        description: Datos  de casos obtenidos correctamente
  *      '403':
  *        description: La peticion no tiene cabecera de autorizacion
  *      '500':
@@ -449,12 +449,12 @@ router.get("/covid/muertes/:estado", async (request, response) => {
  */
 router.get("/covid/casos/:estado", async (request, response) => {
   //const estado = req.params.estado;
-  if (!request.headers.authorization) {
+  /*if (!request.headers.authorization) {
     response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
     return;
-  }
+  }*/
   const estado = "ca";
   let casos = [];
   casos = await axios
@@ -473,9 +473,9 @@ router.get("/covid/casos/:estado", async (request, response) => {
 //DATOS DE test POR ESTADO (PARAMETRO)
 /**
  * @swagger
- * /api/routes/covid/muertes/{estado} :
+ * /api/routes/covid/tests/{estado} :
  *  get:
- *    summary: Obtener los datos del dia establecido del estado pasado por parametro
+ *    summary: Obtener los datos de los tests del estado pasado por parametro
  *    tags: [GET]
  *    parameters:
  *      - in: path
@@ -485,7 +485,7 @@ router.get("/covid/casos/:estado", async (request, response) => {
  *        type: string
  *    responses:
  *      '200':
- *        description: Datos diarios del estado obtenidos correctamente
+ *        description: Datos de los tests del estado obtenidos correctamente
  *      '403':
  *        description: La peticion no tiene cabecera de autorizacion
  *      '500':
@@ -493,12 +493,12 @@ router.get("/covid/casos/:estado", async (request, response) => {
  */
 router.get("/covid/tests/:estado", async (request, response) => {
   //const estado = request.params.estado;
-  if (!request.headers.authorization) {
+  /*if (!request.headers.authorization) {
     response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
     return;
-  }
+  }*/
   const estado = "ca";
   let tests = [];
   tests = await axios
