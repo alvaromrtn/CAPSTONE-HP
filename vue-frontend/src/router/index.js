@@ -41,6 +41,11 @@ const routes = [
     name: "test",
     component: () => import("../views/Covid_Tests.vue"),
   },
+  {
+    path: "/covid_datos",
+    name: "covid_datos",
+    component: () => import("../views/Covid_Datos.vue"),
+  },
 ];
 
 const router = createRouter({

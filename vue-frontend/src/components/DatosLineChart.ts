@@ -34,17 +34,17 @@ export default defineComponent({
       type: Array,
       default: [],
     },
-    data: {
+    casos: {
       type: Array,
       default: [],
     },
-    nombre_label: {
-      type: String,
-      default: "Datos",
+    muertes: {
+      type: Array,
+      default: [],
     },
-    color: {
-      type: String,
-      default: "#005DFF",
+    tests: {
+      type: Array,
+      default: [],
     },
     chartId: {
       type: String,
@@ -68,10 +68,20 @@ export default defineComponent({
       labels: props.labels,
       datasets: [ 
         {
-          label: props.nombre_label,
-          backgroundColor: props.color,
-          data: props.data,
+          label: "Casos",
+          backgroundColor: "#005DFF",
+          data: props.casos,
         },
+        {
+          label: "Muertes",
+          backgroundColor: "#000000",
+          data: props.muertes,
+        },
+        {
+          label: "Test",
+          backgroundColor: "#6ACB23",
+          data: props.tests,
+        },   
       ],
     };
 

@@ -40,6 +40,9 @@
           <router-link to="/covid_tests" class="nav-link"
             >TESTS COVID</router-link
           >
+          <router-link to="/covid_datos" class="nav-link"
+            >DATOS COVID</router-link
+          >
         </div>
       </div>
     </nav>

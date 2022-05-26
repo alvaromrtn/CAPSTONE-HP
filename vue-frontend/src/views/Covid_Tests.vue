@@ -4,7 +4,12 @@
     <br />
     <h1 class="text-center">TESTS</h1>
     <div v-if="this.datosGraficos">
-      <LineChart :labels="this.labels" :data="this.data" />
+      <LineChart
+        :labels="this.labels"
+        :data="this.data"
+        :nombre_label="this.nombre_label"
+        :color="this.color"
+      />
     </div>
 
     <table class="table table-striped table-responsive">
@@ -38,6 +43,8 @@ export default {
       datosGraficos: false,
       labels: [],
       data: [],
+      nombre_label: "",
+      color: "",
     };
   },
   methods: {
@@ -51,6 +58,9 @@ export default {
           this.labels.push(a.fecha);
           this.data.push(a.tests);
         });
+
+        this.nombre_label = "Tests";
+        this.color = "#6ACB23";
 
         this.datosGraficos = true;
       });
