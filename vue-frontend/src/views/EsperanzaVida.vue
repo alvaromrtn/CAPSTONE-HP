@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <h1 class="text-center">Lista de paises</h1>
+    <h1 class="text-center">LISTA DE PAÍSES</h1>
     <table class="table table-striped">
       <thead>
-        <th>PAÍS</th>
-        <th>ESPERANZA DE VIDA GENERAL</th>
-        <th>ESPERANZA DE VIDA HOMBRE</th>
-        <th>ESPERANZA DE VIDA MUJERES</th>
+        <th>País</th>
+        <th>Esperanza de vida general</th>
+        <th>Esperanza de vida en hombre</th>
+        <th>Esperanza de vida en mujeres</th>
       </thead>
       <tbody>
         <tr v-for="pais in data" v-bind:key="pais.nombre">

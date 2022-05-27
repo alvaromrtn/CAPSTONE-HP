@@ -8,7 +8,6 @@
       <section
         class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
       >
-       
         <!-- Right -->
         <div>
           <a href="" class="me-4 text-reset">
@@ -42,11 +41,10 @@
             <!-- Grid column -->
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <!-- Content -->
-              <h6 class="text-uppercase fw-bold mb-4">
-                <i class="fas fa-gem me-3"></i>CAPSTONE IMMUNE
-              </h6>
+              <h6 class="text-uppercase fw-bold mb-4">CAPSTONE IMMUNE</h6>
               <p>
-                Proyecto final bootcamp IMMUNE usando las tecnologias Vuejs, Node y MongoDB
+                Proyecto Final de Bootcamp en IMMUNE usando las tecnologias
+                VueJS, NodeJS y MongoDB.
               </p>
             </div>
             <!-- Grid column -->
@@ -54,18 +52,22 @@
             <!-- Grid column -->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">Referencias</h6>
+              <h6 class="text-uppercase fw-bold mb-4">REFERENCIAS</h6>
               <p>
-                <a href="https://vuejs.org/" class="text-reset">Vue</a>
+                <a href="https://vuejs.org/" class="text-reset">VueJS</a>
               </p>
               <p>
-                <a href="https://www.mongodb.com/" class="text-reset">MongoDB</a>
+                <a href="https://www.mongodb.com/" class="text-reset"
+                  >MongoDB</a
+                >
               </p>
               <p>
-                <a href="https://nodejs.org/es/" class="text-reset">Node</a>
+                <a href="https://nodejs.org/es/" class="text-reset">NodeJS</a>
               </p>
               <p>
-                <a href="https://covidtracking.com/data" class="text-reset">API covid</a>
+                <a href="https://covidtracking.com/data" class="text-reset"
+                  >API COVID</a
+                >
               </p>
             </div>
             <!-- Grid column -->
@@ -73,38 +75,31 @@
             <!-- Grid column -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
               <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">Enlaces utiles</h6>
+              <h6 class="text-uppercase fw-bold mb-4">ENLACE ÚTILES</h6>
               <p>
-                <a href="https://www.usal.es/" class="text-reset">Universidad de salamanca</a>
+                <a href="https://www.usal.es/" class="text-reset"
+                  >Universidad de Salamanca</a
+                >
               </p>
               <p>
-                <a href="https://immune.institute/" class="text-reset">Immune</a>
+                <a href="https://immune.institute/" class="text-reset"
+                  >IMMUNE</a
+                >
               </p>
               <p>
                 <a href="https://hpscds.com/" class="text-reset">HP SCDS</a>
               </p>
-              
             </div>
             <!-- Grid column -->
 
             <!-- Grid column -->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
               <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
-              <p><i class="fas fa-home me-3"></i>Pl. Caídos, s/n, 37008 Salamanca </p>
-              <p>
-                <i class="fas fa-envelope me-3"></i>
-                victor.perez.hp@immune.com
-              </p>
-              <p>
-                <i class="fas fa-envelope me-3"></i>
-                alvaro.martin.hp@immune.com
-              </p>
-              <p>
-                <i class="fas fa-envelope me-3"></i>
-                victor.rodriguez.hp@immune.com
-              </p>
-              
+              <h6 class="text-uppercase fw-bold mb-4">CONTACTO</h6>
+              <p>Plaza de los Caídos, S/N 37008 Salamanca</p>
+              <p>victor.perez.hp@immune.com</p>
+              <p>alvaro.martin.hp@immune.com</p>
+              <p>victor.rodriguez.hp@immune.com</p>
             </div>
             <!-- Grid column -->
           </div>

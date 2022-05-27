@@ -20,28 +20,30 @@
         <div class="carousel-item active">
           <img
             class="d-block w-100"
-            src="http://localhost:8080/static/images/carousel1.jpg"
+            src="../../static/images/carousel1.jpg"
             alt="First slide"
           />
           <div class="carousel-caption d-none d-md-block">
-            <h3>Descubre todos los datos de la pandemia en EEUU</h3>
-            <p>Registrate y descubre toda la información acerca del COVID 19</p>
+            <h3>Descubre todos los datos de la pandemia en EEUU.</h3>
+            <p>
+              Regístrate y descubre toda la información acerca del COVID-19.
+            </p>
             <div>
               <a
                 href="/login"
                 class="btn btn-primary btn-lg active mx-3"
                 role="button"
                 aria-pressed="true"
-                style="background-color:#333c87;"
-                >Inicia sesion</a
+                style="background-color: #333c87"
+                >Inicia sesión</a
               >
               <a
                 href="/register"
                 class="btn btn-primary btn-lg active mx-3"
                 role="button"
-                style="background-color:#333c87;"
+                style="background-color: #333c87"
                 aria-pressed="true"
-                >Registrate</a
+                >Regístrate</a
               >
             </div>
           </div>
@@ -49,57 +51,61 @@
         <div class="carousel-item">
           <img
             class="d-block w-100"
-            src="http://localhost:8080/static/images/carousel2.jpg"
+            src="../../static/images/carousel2.jpg"
             alt="Second slide"
           />
           <div class="carousel-caption d-none d-md-block">
-            <h5>Descubre todos los datos de la pandemia en EEUU</h5>
-            <p>Registrate y descubre toda la información acerca del COVID 19</p>
+            <h3>Descubre todos los datos de la pandemia en EEUU.</h3>
+            <p>
+              Regístrate y descubre toda la información acerca del COVID-19.
+            </p>
             <div>
               <a
                 href="/login"
                 class="btn btn-primary btn-lg active mx-3"
                 role="button"
-                style="background-color:#333c87;"
                 aria-pressed="true"
-                >Inicia sesion</a
+                style="background-color: #333c87"
+                >Inicia sesión</a
               >
               <a
                 href="/register"
                 class="btn btn-primary btn-lg active mx-3"
                 role="button"
-                style="background-color:#333c87;"
+                style="background-color: #333c87"
                 aria-pressed="true"
-                >Registrate</a
+                >Regístrate</a
               >
             </div>
           </div>
         </div>
         <div class="carousel-item">
           <img
-            class="d-block w-100 "
-            src="http://localhost:8080/static/images/carousel3.png"
+            class="d-block w-100"
+            src="../../static/images/carousel3.png"
             alt="Third slide"
           />
           <div class="carousel-caption d-none d-md-block">
-            <h5>Descubre todos los datos de la pandemia en EEUU</h5>
-            <p>Registrate y descubre toda la información acerca del COVID 19</p>
+            <h3>Descubre todos los datos de la pandemia en EEUU.</h3>
+            <p>
+              Regístrate y descubre toda la información acerca del COVID-19.
+            </p>
             <div>
               <a
                 href="/login"
                 class="btn btn-primary btn-lg active mx-3"
-                type="button"
+                role="button"
                 aria-pressed="true"
-                style="background-color:#333c87;"
-                >Inicia sesion</a
+                style="background-color: #333c87"
+                >Inicia sesión</a
               >
               <a
                 href="/register"
                 class="btn btn-primary btn-lg active mx-3"
-                type="button"
+                role="button"
+                style="background-color: #333c87"
                 aria-pressed="true"
-                style="background-color:#333c87;"
-                >Registrate</a
+                >Regístrate</a
               >
             </div>
           </div>
@@ -113,7 +119,7 @@
         data-slide="prev"
       >
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only">Anterior</span>
       </a>
       <a
         class="carousel-control-next"
@@ -122,7 +128,7 @@
         data-slide="next"
       >
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">Siguiente</span>
       </a>
     </div>
 
@@ -136,10 +142,11 @@
             style="text-align: left"
           >
             <div class="p-lg-5 ps-lg-0">
-              <h6 class="text-primary">¿ Por qué nosotros?</h6>
-              <h1 class="mb-4">Datos de covid actualizados</h1>
+              <h6 class="text-primary">¿Por qué nosotros?</h6>
+              <h1 class="mb-4">Datos del COVID-19 actualizados.</h1>
               <p class="mb-4 pb-2">
-                ¿Quieres saber los nuevos positivos, fallecidos o los test realizados en tu estado?
+                ¿Quieres saber los nuevos positivos, fallecidos o los test
+                realizados en tu estado?
               </p>
             </div>
           </div>
@@ -151,7 +158,7 @@
             <div class="position-relative h-100">
               <img
                 class="img-fluid w-100 h-100"
-                src="http://localhost:8080/static/images/home1.jpg"
+                src="../../static/images/home1.jpg"
                 style="object-fit: cover"
                 alt=""
               />
@@ -174,7 +181,7 @@
             <div class="position-relative h-100">
               <img
                 class="img-fluid w-100 h-100"
-                src="http://localhost:8080/static/images/home2.jpg"
+                src="../../static/images/home2.jpg"
                 style="object-fit: cover"
                 alt=""
               />
@@ -186,11 +193,12 @@
             style="text-align: right"
           >
             <div class="p-lg-5 ps-lg-0">
-              <h6 class="text-primary">Visualizacion sencilla de los datos</h6>
-              <h1 class="mb-4">Graficos covid</h1>
+              <h6 class="text-primary">Visualización sencilla de los datos</h6>
+              <h1 class="mb-4">Gráficos del COVID-19</h1>
               <p class="mb-4 pb-2">
-                En nuestra aplicación podrás visualizar de manera sencilla los datos mas relevantes de la pandemia por estados. 
-                Enterate de la situación actual de tu estado en solo click
+                En nuestra aplicación podrás visualizar de manera sencilla los
+                datos más relevantes de la pandemia en cada estado. Entérate de
+                la situación actual de tu estado en un solo click.
               </p>
             </div>
           </div>

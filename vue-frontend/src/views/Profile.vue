@@ -2,7 +2,7 @@
   <div class="container-xl px-4 mt-4">
     <hr class="mt-0 mb-4" />
     <div class="row">
-      <div class="col-xl-8">
+      <div class="col-xl" style="align: middle">
         <!-- Account details card-->
         <div class="card mb-4">
           <div class="card-header">Datos personales</div>
@@ -62,7 +62,9 @@
                   />
                 </div>
               </div>
-              <button class="btn btn-primary" style="background-color:#333c87;">Guardar cambios</button>
+              <button class="btn btn-primary" style="background-color: #333c87">
+                Guardar cambios
+              </button>
             </form>
             <button @click="showModal = true" class="btn btn-danger">
               Eliminar usuario
@@ -72,51 +74,50 @@
       </div>
     </div>
     <!-- Modales -->
-  <div v-if="showModal">
-    <transition name="modal">
-      <div class="modal-mask">
-        <div class="modal-wrapper">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Usuario eliminado</h5>
+    <div v-if="showModal">
+      <transition name="modal">
+        <div class="modal-mask">
+          <div class="modal-wrapper">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Usuario eliminado</h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true" @click="showModal = false"
+                      >&times;</span
+                    >
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>¿Estás seguro de querer eliminar el usuario?</p>
+                </div>
+                <div class="modal-footer">
+                  <a href="/">
+                    <button>Página de inicio</button>
+                  </a>
+                </div>
+                <button @click="deleteUser(user._id)" class="btn btn-danger">
+                  Eliminar
+                </button>
                 <button
                   type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
+                  class="btn btn-secondary"
+                  @click="showModal = false"
                 >
-                  <span aria-hidden="true" @click="showModal = false"
-                    >&times;</span
-                  >
+                  Cerrar
                 </button>
               </div>
-              <div class="modal-body">
-                <p>¿Estas seguro de que quieres eliminar el usuario?</p>
-              </div>
-              <div class="modal-footer">
-                <a href="/">
-                  <button>Pagina de inicio</button>
-                </a>
-              </div>
-              <button @click="deleteUser(user._id)" class="btn btn-danger">
-                Delete
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                @click="showModal = false"
-              >
-                Close
-              </button>
             </div>
           </div>
         </div>
-      </div>
-    </transition>
+      </transition>
+    </div>
   </div>
-  </div>
-  
 </template>
 
 <script>

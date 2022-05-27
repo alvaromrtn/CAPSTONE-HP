@@ -57,7 +57,12 @@
             />
           </div>
           <br />
-          <button class="w-100 btn btn-success btn-block" style="background-color:#333c87;">Enviar</button>
+          <button
+            class="w-100 btn btn-success btn-block"
+            style="background-color: #333c87"
+          >
+            Enviar
+          </button>
           <!--<router-link class="w-100 btn btn-lg btn-primary" type="submit" to="/signup">Iniciar sesion</router-link>-->
           <br /><br />
           <div>
@@ -68,7 +73,7 @@
         </form>
       </div>
     </div>
-    <p class="mt-3 mb-3 text-muted text-center">© 2020–2025</p>
+    <p class="mt-3 mb-3 text-muted text-center">© 2022</p>
   </main>
 </template>
 
@@ -94,14 +99,17 @@ export default {
   },
   methods: {
     sendUser() {
-      //COMPROBAR NOMBRE USUARIO Y PASS -> NO ESTÉN VACIAS (LENGTH)
-      Register_Service.getRegister(this.user).then((response) => {
-        this.data = response;
+      if (this.user.password == this.user.confirm_password) {
+        Register_Service.getRegister(this.user).then((response) => {
+          this.data = response;
 
-        this.$router.push({
-          name: "login",
+          this.$router.push({
+            name: "login",
+          });
         });
-      });
+      } else {
+        console.log("Las contraseñas no son iguales");
+      }
     },
   },
 };

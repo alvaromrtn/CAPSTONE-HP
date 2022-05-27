@@ -259,11 +259,11 @@ router.post("/changeData", async (request, response) => {
 router.get("/esperanza_de_vida", async (request, response) => {
   //Comprobamos la cabecera:
   console.log(request.headers.authorization);
-  /*if (!request.headers.authorization) {
+  if (!request.headers.authorization) {
     return response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
-  }*/
+  }
 
   let paises = [
     {
@@ -328,11 +328,11 @@ router.get("/esperanza_de_vida", async (request, response) => {
  */
 router.delete("/:id", async (request, response) => {
   //Comprobamos la cabecera:
-  /*if (!request.headers.authorization) {
+  if (!request.headers.authorization) {
     return response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
-  }*/
+  }
   await User.findByIdAndRemove(request.params.id);
   response.json({
     status: "Usuario eliminado",
@@ -362,13 +362,13 @@ router.delete("/:id", async (request, response) => {
  *        description: Error del servidor
  */
 router.get("/covid/hoy/:estado", async (request, response) => {
-  const estado = request.params.estado;
-  /*if (!request.headers.authorization) {
+  //const estado = request.params.estado;
+  if (!request.headers.authorization) {
     return response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
-  }*/
-  //const estado = "ca";
+  }
+  const estado = "ca";
   let dia = null;
   dia = await axios
     .get(`https://api.covidtracking.com/v1/states/${estado}/20200501.json`)
@@ -403,14 +403,13 @@ router.get("/covid/hoy/:estado", async (request, response) => {
  *        description: Error del servidor
  */
 router.get("/covid/muertes/:estado", async (request, response) => {
-  //
   //const estado = request.params.estado;
-  /*if (!request.headers.authorization) {
+  if (!request.headers.authorization) {
     response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
     return;
-  }*/
+  }
   const estado = "ca";
   let muertes = [];
   muertes = await axios
@@ -449,12 +448,12 @@ router.get("/covid/muertes/:estado", async (request, response) => {
  */
 router.get("/covid/casos/:estado", async (request, response) => {
   //const estado = req.params.estado;
-  /*if (!request.headers.authorization) {
+  if (!request.headers.authorization) {
     response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
     return;
-  }*/
+  }
   const estado = "ca";
   let casos = [];
   casos = await axios
@@ -493,12 +492,12 @@ router.get("/covid/casos/:estado", async (request, response) => {
  */
 router.get("/covid/tests/:estado", async (request, response) => {
   //const estado = request.params.estado;
-  /*if (!request.headers.authorization) {
+  if (!request.headers.authorization) {
     response.status(403).json({
       title: "Tu petición no tiene cabecera de autorización.",
     });
     return;
-  }*/
+  }
   const estado = "ca";
   let tests = [];
   tests = await axios

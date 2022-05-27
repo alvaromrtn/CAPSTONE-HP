@@ -31,19 +31,22 @@
               ><input type="checkbox" value="remember-me" /> Recordarme</label
             >
           </div>
-          <button class="w-100 btn btn-success btn-block" style="background-color:#333c87;">
-            Iniciar sesion
+          <button
+            class="w-100 btn btn-success btn-block"
+            style="background-color: #333c87"
+          >
+            Iniciar sesión
           </button>
 
           <br /><br />
           <div>
             ¿Aún no estás registrado?
-            <a class="" href="/register">Registrate aqui</a>
+            <a class="" href="/register">Regístrate aquí</a>
           </div>
         </form>
       </div>
     </div>
-    <p class="mt-3 mb-3 text-muted text-center">© 2020–2025</p>
+    <p class="mt-3 mb-3 text-muted text-center">© 2022</p>
   </main>
 </template>
 
